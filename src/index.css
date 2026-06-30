@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-surface: #fff;
+  --color-input: #f8f7fa;
+  --color-sidebar: #faf9fc;
+  --color-thinking: #f0edf5;
+  --color-text: #6b6375;
+  --color-text-heading: #08060d;
+  --color-text-muted: #9ca3af;
+  --color-border: #e5e4e7;
+  --color-accent: #aa3bff;
+  --color-accent-bg: rgba(170, 59, 255, 0.1);
+  --color-accent-border: rgba(170, 59, 255, 0.5);
+}
+
+.dark {
+  --color-surface: #1e1e2e;
+  --color-input: #2a2a3e;
+  --color-sidebar: #181825;
+  --color-thinking: #2a2a3e;
+  --color-text: #c9c7cd;
+  --color-text-heading: #e8e6ec;
+  --color-text-muted: #6b7280;
+  --color-border: #3d3d4f;
+  --color-accent: #c06dff;
+  --color-accent-bg: rgba(192, 109, 255, 0.15);
+  --color-accent-border: rgba(192, 109, 255, 0.4);
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: 0.18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

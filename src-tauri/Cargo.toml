@@ -1,0 +1,45 @@
+[package]
+name = "tipsytavern"
+version = "0.0.0"
+description = "TipsyTavern — a SillyTavern-like desktop AI chat client"
+authors = ["TipsyTavern"]
+edition = "2021"
+rust-version = "1.77.2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "tipsytavern_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset"] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# LLM 网络与流式
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+tokio = { version = "1", features = ["sync", "macros", "rt", "io-util", "fs"] }
+futures-util = "0.3"
+bytes = "1"
+
+# 密钥与唯一 ID
+keyring = { version = "3", features = ["apple-native", "windows-native", "sync-secret-service"] }
+uuid = { version = "1", features = ["v4"] }
+
+# 流式与错误
+async-stream = "0.3"
+thiserror = "2"
+png = "0.18.1"
+base64 = "0.22.1"
+tauri-plugin-dialog = "2.7.1"
+flate2 = "1.1.9"
+crc32fast = "1.5.0"
+
+[features]
+# This feature is used for production builds or when a dev server is not specified, DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]
