@@ -2,8 +2,6 @@
 
 A desktop AI chat client for immersive roleplaying — character cards, world books, personas, and multi-provider LLM streaming. Built with Tauri, React, and Rust.
 
-![Screenshot](app-icon.svg)
-
 ## Features
 
 - **Character Cards** — Import PNG V1/V2/V3 character cards (SillyTavern compatible). Description, personality, scenario, and avatar all work out of the box.
