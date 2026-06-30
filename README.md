@@ -1,32 +1,75 @@
-# React + TypeScript + Vite
+# TipsyTavern
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A desktop AI chat client for immersive roleplaying — character cards, world books, personas, and multi-provider LLM streaming. Built with Tauri, React, and Rust.
 
-Currently, two official plugins are available:
+![Screenshot](app-icon.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Character Cards** — Import PNG V1/V2/V3 character cards (SillyTavern compatible). Description, personality, scenario, and avatar all work out of the box.
+- **World Books** — Keyword-activated lore injection with recursive scanning, token budgeting, and customizable format templates.
+- **Personas** — User profiles with avatar, description, and linked world books. Injects into the system prompt for AI awareness.
+- **Multi-Provider Streaming** — Supports OpenAI, Anthropic Claude, Google Gemini, OpenRouter, and any OpenAI-compatible API. SSE streaming with thinking/CoT support.
+- **Inspector** — Real-time context inspection. See exactly what gets sent to the LLM on every request.
+- **Themes** — Light, Dark, and System theme modes with 10 accent colors.
+- **Layouts** — Bubble and document (flat) chat views.
+- **Greeting Switcher** — Cycle through character alternate greetings before starting a conversation.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the Oxlint configuration
+| Layer | Technology |
+|-------|-----------|
+| Desktop | Tauri 2 |
+| Frontend | React 19 · TypeScript · Tailwind CSS 4 |
+| Backend | Rust · reqwest · tokio · serde |
+| LLM APIs | OpenAI · Anthropic · Gemini · OpenRouter |
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Prerequisites
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- [Node.js](https://nodejs.org/) 18+
+- [Rust](https://www.rust-lang.org/) (stable)
+- [Tauri CLI](https://v2.tauri.app/start/prerequisites/)
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run in dev mode (with hot reload)
+npm run tauri dev
+
+# Build for production
+npm run tauri build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Project Structure
+
+```
+TipsyTavern/
+  src/                     # React frontend
+    components/            # Shared UI components
+    features/              # Feature modules
+      chat/                # Chat interface
+      characters/          # Character editor
+      worldbook/           # World book editor
+      personas/            # Persona editor
+      inspector/           # Context inspector
+      settings/            # App settings
+    lib/                   # Shared libraries & API layer
+  src-tauri/               # Rust backend
+    src/
+      ai/                  # LLM provider abstraction
+        providers/         # OpenAI / Anthropic / Gemini implementations
+      commands.rs          # Tauri IPC command handlers
+      storage.rs           # File-backed persistence layer
+      character.rs         # Character card parser (PNG V1/V2/V3)
+```
+
+## Acknowledgments
+
+Inspired by [SillyTavern](https://github.com/SillyTavern/SillyTavern), the open-source AI chat platform. Thanks to the ST community for establishing the character card and world book formats this project builds upon.
+
+## License
+
+MIT

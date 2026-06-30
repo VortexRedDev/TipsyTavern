@@ -305,38 +305,90 @@ function AboutPage() {
       <div className="z-10 border-b border-border bg-surface px-6 py-3 shrink-0">
         <h2 className="text-[15px] font-medium text-text-heading">About</h2>
       </div>
-      <div className="flex-1 overflow-y-auto p-6">
-        <div className="rounded-lg border border-border bg-surface p-6 space-y-4">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+        <div className="rounded-lg border border-border bg-surface p-6 space-y-5">
           <div>
             <h3 className="text-[20px] font-medium text-text-heading">TipsyTavern</h3>
             <p className="mt-1 text-[13px] text-text-muted">v0.1.0</p>
           </div>
+
           <p className="text-[14px] text-text leading-relaxed">
-            A desktop AI chat client inspired by SillyTavern. Built with Tauri + React + Rust.
+            A desktop AI chat client for immersive roleplaying. Built with Tauri, React, and
+            Rust — supporting character cards, world books, personas, and multi-provider
+            LLM streaming.
           </p>
-          <div className="space-y-2 text-[13px] text-text">
-            <div className="flex items-center gap-2">
-              <span className="text-text-muted w-20 shrink-0">Framework</span>
-              <span>Tauri 2 + React 19 + TypeScript</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-text-muted w-20 shrink-0">Backend</span>
-              <span>Rust (reqwest + tokio)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-text-muted w-20 shrink-0">LLM Support</span>
-              <span>OpenAI · Anthropic · Gemini · OpenRouter + compatible APIs</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-text-muted w-20 shrink-0">Features</span>
-              <span>Character Cards · World Books · Personas · Streaming · Inspector</span>
+
+          <div className="space-y-3">
+            <h4 className="text-[13px] font-semibold text-text-heading">Tech Stack</h4>
+            <div className="space-y-1.5 text-[13px] text-text">
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-20 shrink-0">Framework</span>
+                <span>Tauri 2 · React 19 · TypeScript 5 · Tailwind CSS 4</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-20 shrink-0">Backend</span>
+                <span>Rust · reqwest · tokio · serde</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-20 shrink-0">LLM APIs</span>
+                <span>OpenAI · Anthropic Claude · Google Gemini · OpenRouter</span>
+              </div>
             </div>
           </div>
-          <div className="pt-2 border-t border-border">
-            <a href="https://github.com/anomalyco/opencode/issues" target="_blank"
-              className="text-[13px] text-accent hover:underline">
-              Report an issue →
+
+          <div className="space-y-3">
+            <h4 className="text-[13px] font-semibold text-text-heading">Features</h4>
+            <div className="space-y-1.5 text-[13px] text-text">
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-24 shrink-0">Character Cards</span>
+                <span>PNG V1/V2/V3 import, SillyTavern compatible</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-24 shrink-0">World Books</span>
+                <span>Keyword-activated lore injection with recursive scanning</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-24 shrink-0">Personas</span>
+                <span>User profiles with avatar, description, linked world books</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-24 shrink-0">Streaming</span>
+                <span>SSE streaming with thinking/CoT support</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-24 shrink-0">Inspector</span>
+                <span>Real-time context inspection for every request</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-24 shrink-0">Themes</span>
+                <span>Light / Dark / System with 10 accent colors</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-text-muted w-24 shrink-0">Layout</span>
+                <span>Bubble and document (flat) chat views</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="text-[13px] font-semibold text-text-heading">Acknowledgments</h4>
+            <p className="text-[13px] text-text leading-relaxed">
+              Inspired by{' '}
+              <a href="https://github.com/SillyTavern/SillyTavern" target="_blank"
+                className="text-accent hover:underline">SillyTavern</a>
+              , the open-source AI chat platform. Thanks to the ST community for establishing
+              the character card and world book formats this project builds upon.
+            </p>
+          </div>
+
+          <div className="pt-3 border-t border-border space-y-2">
+            <a href="https://github.com/VortexRedDev/TipsyTavern" target="_blank"
+              className="inline-flex items-center gap-1.5 text-[13px] text-accent hover:underline">
+              GitHub Repository →
             </a>
+            <p className="text-[12px] text-text-muted">
+              Licensed under MIT. Contributions and feedback welcome.
+            </p>
           </div>
         </div>
       </div>
