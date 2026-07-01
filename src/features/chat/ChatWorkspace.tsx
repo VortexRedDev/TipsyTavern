@@ -269,7 +269,7 @@ export function ChatWorkspace({ selectedItemId, onDeleteChat, onNewChat }: Props
             if (cur) {
               const msgs = [...cur.messages]
               const last = msgs[msgs.length - 1]
-              if (last && last.id.startsWith('__streaming__')) {
+              if (last && last.id?.startsWith('__streaming__')) {
                 const prevReasoning = last.reasoning ?? ''
                 msgs[msgs.length - 1] = { ...last, reasoning: prevReasoning + thinking }
                 const updated = { ...cur, messages: msgs, updated_at: Date.now() }

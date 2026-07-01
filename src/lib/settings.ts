@@ -31,6 +31,7 @@ export interface WorldBookSettings {
 export interface AppSettings {
   defaultChatModel?: { providerId: string; modelId: string; modelName: string; providerName: string }
   worldBookSettings?: WorldBookSettings
+  activePersonaId?: string
 }
 
 let cached: AppSettings | null = null

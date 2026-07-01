@@ -15,7 +15,7 @@ import { PersonaList } from './features/personas/PersonaList'
 import { PersonaWorkspace } from './features/personas/PersonaWorkspace'
 import { InspectorList } from './features/inspector/InspectorList'
 import { InspectorWorkspace } from './features/inspector/InspectorWorkspace'
-import { getInspectorEntries, getInspectorVersion, subscribeInspector } from './lib/inspector'
+import { getInspectorEntries, subscribeInspector } from './lib/inspector'
 import { loadCharacter } from './lib/characters'
 import { saveChat, createChatId, type ChatData } from './lib/chats'
 
@@ -37,7 +37,6 @@ function App() {
   const [activePanel, setActivePanel] = useState<Panel>('chat')
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null)
   const [refreshKey, setRefreshKey] = useState(0)
-  const [inspectorVersion, setInspectorVersion] = useState(0)
   const [listCollapsed, setListCollapsed] = useState(false)
 
   const handleDeleted = () => {
@@ -46,8 +45,7 @@ function App() {
   }
 
   useEffect(() => {
-    setInspectorVersion(getInspectorVersion())
-    return subscribeInspector(() => setInspectorVersion((v) => v + 1))
+    return subscribeInspector(() => setRefreshKey((k) => k + 1))
   }, [])
 
   const handleStartChat = async (characterId: string, characterName: string) => {
@@ -94,8 +92,8 @@ function App() {
     setListCollapsed(false)
   }
 
-  const ListComponent = activePanel ? listComponents[activePanel] : null
-  const WorkspaceComponent = activePanel ? workspaceComponents[activePanel] : null
+  const ListComponent = activePanel ? (listComponents as any)[activePanel] : null
+  const WorkspaceComponent = activePanel ? (workspaceComponents as any)[activePanel] : null
 
   return (
     <ThemeProvider>
@@ -149,7 +147,7 @@ function App() {
               : activePanel === 'chat'
               ? <WorkspaceComponent selectedItemId={selectedItemId}
                   onDeleteChat={handleDeleteChat}
-                  onNewChat={async (characterId) => {
+                  onNewChat={async (characterId: string) => {
                     try { const char = await loadCharacter(characterId); handleStartChat(characterId, char?.name ?? 'New Chat') } catch {}
                   }}
                 />
